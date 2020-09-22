@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.mapper.QnAMapper">
+
+	<!-- 게시글 전체 조회 -->
+	<select id="selectQnA" resultType="qna">
+		select qna_no as qnaNo, 
+			qna_title as qnaTitle , 
+			qna_content as qnaContent ,
+			qna_datetime as qnaDatetime, 
+			qna_userid as qnaUserid, 
+			reply_content as replyContent, 
+			reply_datetime as replyDatetime, 
+			reply_userid as replyUserid,
+			reply_ok as replyOk
+		from qna_board 
+		order by qna_no desc
+	</select>
+			
+	<select id="selectOneQnA" resultType="qna">
+		select qna_no as qnaNo, 
+			qna_title as qnaTitle , 
+			qna_content as qnaContent ,
+			qna_datetime as qnaDatetime, 
+			qna_userid as qnaUserid, 
+			reply_content as replyContent, 
+			reply_datetime as replyDatetime, 
+			reply_userid as replyUserid,
+			reply_ok as replyOk
+		from qna_board
+		where qna_no = #{qnaNo} 
+		order by qna_no desc
+	</select>
+	<update id="modify">
+		update qna_board 
+			set reply_content=#{replyContent} , reply_datetime=sysdate() , reply_userid = #{replyUserid}, reply_ok = 'Y' 
+		where qna_no = #{qnaNo}
+	</update>
+	<delete id="delete">
+		delete from qna_board
+		where qna_no = #{qnaNo}
+	</delete>
+	<insert id="add">
+		insert into qna_board 
+		values(null,#{qnaTitle},#{qnaContent},#{qnaUserid},sysdate(),null,null,null,'N')
+	</insert>
+</mapper>
+

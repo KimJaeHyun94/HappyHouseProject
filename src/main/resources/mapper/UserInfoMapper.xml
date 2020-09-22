@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.mapper.UserInfoMapper">
+	<select id="login" resultType="UserInfo">
+  		select * from userinfo where id=#{id} and password=#{password}  
+  	</select>
+	<delete id="deleteUserInfo">
+  		delete from userinfo where id = #{id}
+ 	</delete>
+ 	<update id="modifyUserInfo">
+ 		update userinfo set password=#{password}, name=#{name}, address=#{address},
+ 		phone=#{phone} where id=#{id}
+ 	</update>
+ 	<insert id="addUserInfo">
+ 		insert into userinfo values (#{id},#{password},#{name},#{address},#{phone})
+ 	</insert>
+</mapper>

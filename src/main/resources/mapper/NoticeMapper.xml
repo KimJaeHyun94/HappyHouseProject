@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.mapper.NoticeMapper">
+	<select id="selectAll" resultType="Notice">
+		select * from notice order by no desc
+	</select>
+	
+	<select id="selectOne" resultType="Notice">
+		select * from notice where no=#{no}
+	</select>
+	
+	<update id="countUp">
+		update notice set count=count+1 where no=#{no}
+	</update>
+	
+	<insert id="createNotice">
+		insert into notice values(null,#{title},curdate(),0,'관리자',#{content})
+	</insert>
+	
+	<update id="modifyNotice">
+		update notice set title=#{title}, content=#{content} where no=#{no}
+	</update>
+	<delete id="deleteNotice">
+		delete from notice 
+		where no in
+		<foreach collection="array" item="no" open="(" close=")" separator=",">
+		#{no}
+		</foreach>
+	</delete>
+	
+	
+</mapper>

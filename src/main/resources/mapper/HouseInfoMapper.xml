@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.mapper.HouseInfoMapper">
+
+	<select id="searchAll" resultType="HouseInfo">
+		select * 
+		from houseinfo 
+		where 1=1
+		 
+	  <if test="key=='all'">
+          order by no
+      </if>
+      <if test="key=='dong'">
+          and dong like concat('%',#{word},'%')
+          order by no
+      </if>
+      <if test="key=='name'">
+          and aptname like concat('%',#{word},'%')
+          order by no
+      </if>
+      
+	</select>
+
+	<select id="search" resultType="HouseInfo">
+		select * from houseinfo where no=#{no}
+	</select>
+</mapper>
+

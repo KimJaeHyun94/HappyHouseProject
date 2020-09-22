@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- vo에 대한 별칭 패키지 -->
+	<typeAliases>		
+		<package name="com.ssafy.happyhouse.model.dto"/>
+	</typeAliases>
+	
+	<!-- mapper파일 등록 -->
+	<mappers>
+		<mapper resource="mapper/UserInfoMapper.xml"/> 
+		<mapper resource="mapper/HouseMapper.xml"/> 
+		<mapper resource="mapper/HouseInfoMapper.xml"/>
+		<mapper resource="mapper/CCTVMapper.xml"/>
+		<mapper resource="mapper/NoticeMapper.xml"/>
+		<mapper resource="mapper/qnaMapper.xml"/>
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
